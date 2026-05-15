@@ -27,11 +27,16 @@
 #define MANUFACTURER_ID   DIAT
 
 #define USE_ACC
-#define USE_ACC_SPI_MPU6000
+#define USE_ACC_SPI_ICM42688P
 #define USE_GYRO
-#define USE_GYRO_SPI_MPU6000
+#define USE_GYRO_SPI_ICM42688P
 #define USE_BARO
 #define USE_BARO_BMP280
+#define USE_BARO_DPS310
+#define USE_BARO_BMP388
+#define USE_BARO_MS5611
+#define USE_BARO_QMP6988
+#define USE_BARO_BMP085
 #define USE_FLASH
 #define USE_FLASH_M25P16
 #define USE_MAX7456
@@ -69,8 +74,9 @@
 #define ADC_CURR_PIN         PC3
 #define ADC_INSTANCE         ADC3
 
-#define UART1_TX_PIN         PB6
-#define UART1_RX_PIN         PB7
+// UART1 (PB6/PB7) 引脚被 I2C1 占用，板载气压计接在 I2C1 上 (与 FURYF4OSD 一致)
+// #define UART1_TX_PIN         PB6
+// #define UART1_RX_PIN         PB7
 
 #define UART2_TX_PIN         PA2
 #define UART2_RX_PIN         PA3
@@ -87,8 +93,9 @@
 #define UART6_TX_PIN         PC6
 #define UART6_RX_PIN         PC7
 
-#define I2C1_SCL_PIN         PB8
-#define I2C1_SDA_PIN         PB9
+#define USE_I2C_PULLUP
+#define I2C1_SCL_PIN         PB6
+#define I2C1_SDA_PIN         PB7
 
 #define TIMER_PIN_MAPPING \
     TIMER_PIN_MAP( 0, PA9 , 1,  0) \
