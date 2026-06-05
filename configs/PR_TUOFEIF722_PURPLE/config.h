@@ -23,7 +23,7 @@
 
 #define FC_TARGET_MCU     STM32F7X2
 
-#define BOARD_NAME        PR_TUOFEIF722_OTHER
+#define BOARD_NAME        PR_TUOFEIF722_PURPLE
 #define MANUFACTURER_ID   TFEI
 
 #define USE_ACC
@@ -57,7 +57,8 @@
 #define MOTOR2_PIN           PB6
 #define MOTOR3_PIN           PC9
 #define MOTOR4_PIN           PB7
-#define LED_STRIP_PIN        PA15
+// Purple version: RGB/LED strip NC; PA15 used as SERVO1 (per HXJL_F722_V5 dump)
+#define SERVO1_PIN           PA15
 #define UART1_TX_PIN         PA9
 #define UART2_TX_PIN         PA2
 #define UART3_TX_PIN         PC10
