@@ -113,9 +113,9 @@
 // ============================================================================
 // DSHOT Bitbang 配置（与 F405 v1.5 一致）
 // ============================================================================
-// Bitbang 用一个专用 timer (TIM1) 驱动所有电机的 DSHOT 信号，电机引脚本身
-// 由 GPIO+DMA 直接驱动，不占用各自的 timer 通道，从而把 timer 资源留给
-// LED_STRIP 和 SERVO。
+// 使用 Bitbang 模式后，电机引脚不再需要独立的 timer+DMA channel，
+// 而是用一个专用 timer (TIM1) 来驱动所有 8 路电机的 DSHOT 信号。
+// 这样就释放了 timer 资源给 LED_STRIP 和 SERVO。
 #define DEFAULT_DSHOT_BITBANG DSHOT_BITBANG_ON
 #define DSHOT_BITBANGED_TIMER_DEFAULT DSHOT_BITBANGED_TIMER_TIM1
 
@@ -134,7 +134,7 @@
 //
 // LED_STRIP PA7 occ1 -> TMR3_CH2 (带 DMA, WS2811)
 // SERVO1    PA6 occ2 -> TMR13_CH1 (SERVO 不需要 DMA)
-// SERVO2    PB1 occ3 -> TMR8_CH3N (用 TIM8，因 TIM3 已被 LED 占用)
+// SERVO2    PB1 occ3 -> TMR8_CH3N (SERVO 不需要 DMA；TIM3 被 LED 占用)
 #define TIMER_PIN_MAPPING \
     TIMER_PIN_MAP( 0, PC8,  1, -1) \
     TIMER_PIN_MAP( 1, PC9,  1, -1) \
@@ -151,6 +151,7 @@
 #define ADC1_DMA_OPT 11
 
 #define DEFAULT_BLACKBOX_DEVICE     BLACKBOX_DEVICE_FLASH
+#define DEFAULT_MOTOR_DSHOT_SPEED PWM_TYPE_DSHOT300
 #define DEFAULT_DSHOT_BURST DSHOT_DMAR_OFF
 #define DEFAULT_CURRENT_METER_SOURCE CURRENT_METER_ADC
 #define DEFAULT_VOLTAGE_METER_SOURCE VOLTAGE_METER_ADC

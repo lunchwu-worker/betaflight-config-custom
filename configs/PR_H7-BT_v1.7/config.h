@@ -41,8 +41,6 @@
 
 #define USE_FLASH
 #define USE_FLASH_PY25Q128HA
-#define USE_SDCARD
-#define USE_SDCARD_SPI
 #define USE_BARO
 #define USE_BARO_BMP280
 #define USE_BARO_DPS310
@@ -103,8 +101,6 @@
 
 #define FLASH_CS_PIN      PA15
 #define FLASH_SPI_INSTANCE SPI3
-#define SDCARD_SPI_CS_PIN  PA15
-#define SDCARD_SPI_INSTANCE SPI3
 
 #define GYRO_1_CS_PIN     PA5
 #define GYRO_1_EXTI_PIN   PB12
