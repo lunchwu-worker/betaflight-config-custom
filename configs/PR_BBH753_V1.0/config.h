@@ -67,6 +67,10 @@
 #define USE_OSD_SD
 // CH32 的 USART1：PA9=TX 接飞控 UART7_RX(PE7)，PA10=RX 接飞控 UART7_TX(PE8)。
 #define MSP_DISPLAYPORT_UART SERIAL_PORT_USART7
+// 蓝牙模块 UART8 默认开 MSP（115200），全片擦除后也能直接连
+#define MSP_UART             SERIAL_PORT_UART8
+// 手机 App 不认 2026 / API 1.48：蓝牙口回报 2025.12.1 / API 1.47（仅 2026 固件生效），USB 不受影响
+#define MSP_LEGACY_API_UART  SERIAL_PORT_UART8
 
 // 蜂鸣器 PB0。NPN（Q2 射极接地），高电平鸣，所以不再反相。
 // 无源蜂鸣器用 PWM，2500Hz。定时器必须是 TIM3_CH3（PB0 序号 2），不能占 TIM1。
