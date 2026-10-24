@@ -61,9 +61,10 @@
 
 #define USE_GPS
 
-// OSD — 高清 MSP DisplayPort。只定义 USE_OSD_HD，不定义 USE_OSD_SD。
+// OSD — MSP DisplayPort，HD 与 PAL/NTSC 都可选（默认 HD）。无 MAX7456。
 #define USE_OSD
 #define USE_OSD_HD
+#define USE_OSD_SD
 // CH32 的 USART1：PA9=TX 接飞控 UART7_RX(PE7)，PA10=RX 接飞控 UART7_TX(PE8)。
 #define MSP_DISPLAYPORT_UART SERIAL_PORT_USART7
 

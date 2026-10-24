@@ -27,17 +27,7 @@
 #define MANUFACTURER_ID ABCD
 
 #define USE_ACC
-#define USE_ACC_SPI_ICM42688P
-#define USE_ACC_SPI_LSM6DSV16X
-
 #define USE_GYRO
-#define USE_GYRO_SPI_ICM42688P
-#define USE_GYRO_SPI_LSM6DSV16X
-#define USE_ACCGYRO_LSM6DSV16X
-#define USE_ACCGYRO_SCS3304
-#define USE_ACCGYRO_SCS3302
-
-#define USE_ACCGYRO_IIM42652
 #define USE_ACCGYRO_ICM40608
 
 #define USE_FLASH
@@ -83,6 +73,9 @@
 
 #define I2C1_SCL_PIN PB8
 #define I2C1_SDA_PIN PB9
+// Also define legacy names for 4.3 PG compatibility
+#define I2C1_SCL I2C1_SCL_PIN
+#define I2C1_SDA I2C1_SDA_PIN
 
 #define LED0_PIN PB0
 
@@ -95,6 +88,11 @@
 //#define SPI1_SDO_PIN PA7
 #define SPI2_SDO_PIN PC3
 #define SPI3_SDO_PIN PB5
+// Legacy MISO/MOSI names for 4.3 PG compatibility
+#define SPI2_MISO_PIN SPI2_SDI_PIN
+#define SPI2_MOSI_PIN SPI2_SDO_PIN
+#define SPI3_MISO_PIN SPI3_SDI_PIN
+#define SPI3_MOSI_PIN SPI3_SDO_PIN
 #define ESCSERIAL_PIN PC7
 
 #define ADC_VBAT_PIN PC1
@@ -137,6 +135,7 @@
     TIMER_PIN_MAP( 1, PA7,  2, 0) \
     TIMER_PIN_MAP( 2, PA6,  2, -1) \
     TIMER_PIN_MAP( 3, PB10, 1, -1) \
+    TIMER_PIN_MAP( 4, GYRO_1_CLKIN_PIN, 1, -1) \
 
 #define ADC1_DMA_OPT 0
 
@@ -149,6 +148,7 @@
 #define BEEPER_INVERTED
 #define SYSTEM_HSE_MHZ 8
 #define OSD_CANVAS_SIZE_DEBUG
+#define ITCM_RAM_OPTIMISATION "-Os"
 
 #define MAG_I2C_INSTANCE (I2CDEV_1)
 #define BARO_I2C_INSTANCE (I2CDEV_1)

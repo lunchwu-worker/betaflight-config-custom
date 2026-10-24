@@ -23,7 +23,7 @@
 
 #define FC_TARGET_MCU     STM32H743
 
-#define BOARD_NAME PR_KINETICO_H7
+#define BOARD_NAME KINETICO_H7
 #define MANUFACTURER_ID KINT
 
 #define SYSTEM_HSE_MHZ 8
@@ -33,11 +33,8 @@
 #define USE_FLASH
 #define USE_GYRO
 
-#define USE_ACC_SPI_ICM42688P       
-#define USE_ACCGYRO_BMI270
-#define USE_GYRO_SPI_ICM42688P
-#define USE_ACCGYRO_IIM42652
-#define USE_ACCGYRO_LSM6DSV16X
+#define USE_ACC_SPI_MPU6000
+#define USE_GYRO_SPI_MPU6000
 #define USE_BARO_DPS310
 #define USE_FLASH_PY25Q128HA
 //#define USE_MAX7456
@@ -98,9 +95,6 @@
 #define GYRO_1_EXTI_PIN PC5
 #define GYRO_1_CS_PIN PC4
 
-#define USE_GYRO_CLKIN
-#define GYRO_1_CLKIN_PIN PD15
-
 #define PINIO1_PIN       PD4
 #define PINIO1_BOX       40
 #define PINIO1_CONFIG    129
@@ -110,8 +104,7 @@
     TIMER_PIN_MAP( 1, PA1 , 2,  3) \
     TIMER_PIN_MAP( 2, PA2 , 2,  4) \
     TIMER_PIN_MAP( 3, PA3 , 2,  5) \
-    TIMER_PIN_MAP( 4, PB9 , 1,  0) \
-    TIMER_PIN_MAP( 5, PD15, 1, -1)
+    TIMER_PIN_MAP( 4, PB9 , 1,  0)
 
 #define ADC1_DMA_OPT        8
 #define ADC2_DMA_OPT        9

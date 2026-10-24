@@ -21,13 +21,13 @@
 
 #pragma once
 
-// PR_Manba_H743：STM32H743VIH6（TFBGA-100，U31），引脚分配以嘉立创原理图网表为准。
+// MAMBA_REACTOR_H743：STM32H743VIH6（TFBGA-100，U31），引脚分配以嘉立创原理图网表为准。
 // 板载外设：ICM-40608-P 陀螺仪（SPI1 + CLKIN）、SPA06-003 气压计（I2C1，DPS310 驱动兼容）、
 // PY25Q128HA 128Mbit Flash（SPI3）、CH591 蓝牙模块（UART1）、ESP8285+SX1280 板载 ELRS（UART2）、
 // CH32V203 OSD 协处理器（UART3，MSP DisplayPort）、8 路电机输出。
 #define FC_TARGET_MCU     STM32H743
 
-#define BOARD_NAME        PR_MANBA_H743
+#define BOARD_NAME        MAMBA_REACTOR_H743
 #define MANUFACTURER_ID   PRMB
 
 #define USE_ACC
@@ -132,6 +132,7 @@
 #define PINIO2_PIN        PD4
 #define PINIO2_BOX        41
 #define PINIO2_CONFIG     129   // PINIO_CONFIG_OUT_INVERTED | OUT_PP：上电默认开启 10V BEC
+#define BOX_USER2_NAME    "VTX-SW"   // USER2 显示名（图传电源开关）
 
 #define TIMER_PIN_MAPPING \
     TIMER_PIN_MAP(  0, PA3 , 2,  0 ) \

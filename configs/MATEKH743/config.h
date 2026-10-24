@@ -40,6 +40,24 @@
 #define USE_BARO_BMP280
 #define USE_BARO_DPS310
 #define USE_MAX7456
+// Conservative clock for compatible 7456 parts.
+#define MAX7456_MAX_SPI_CLK_HZ 5000000
+#define MAX7456_INIT_MAX_SPI_CLK_HZ 5000000
+#define MAX7456_CLOCK_CONFIG_DEFAULT MAX7456_CLOCK_CONFIG_NOMINAL
+// Compatible 7456 parts can have a slow or marginal POR/oscillator startup.
+// Wait well beyond the datasheet's 50 ms typical value, then let the driver
+// verify STAT[6] before accessing configuration registers.
+#define MAX7456_POWERUP_DELAY_MS 200
+#define MAX7456_RESET_READY_TIMEOUT_MS 500
+#define MAX7456_DIAGNOSTIC_LEDS
+#define MAX7456_DIAGNOSTIC_LED_READY_PIN PE3
+#define MAX7456_DIAGNOSTIC_LED_ERROR_PIN PE4
+// Default AUTO can fail OSD character recognition on some boards; force PAL.
+#define DEFAULT_VIDEO_SYSTEM VIDEO_SYSTEM_PAL
+#define A7456HD_27MHZ_CLOCK_INIT
+// Keep the diagnostic image independent of stale EEPROM display-port settings.
+#define DEFAULT_OSD_DISPLAYPORT_DEVICE OSD_DISPLAYPORT_DEVICE_MAX7456
+#define DEFAULT_FEATURES FEATURE_OSD
 #define USE_SDCARD
 
 #define BEEPER_PIN           PA15
