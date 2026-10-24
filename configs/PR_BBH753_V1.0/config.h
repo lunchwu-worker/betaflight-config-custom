@@ -173,7 +173,7 @@
 #define TIMUP1_DMA_OPT       10
 
 #define BARO_I2C_INSTANCE    I2CDEV_2
-#define MAG_I2C_INSTANCE     I2CDEV_2
+#define MAG_I2C_INSTANCE     I2CDEV_3
 
 #define DEFAULT_BLACKBOX_DEVICE        BLACKBOX_DEVICE_NONE
 // Gyro2 默认空贴，开机只用 Gyro1。
