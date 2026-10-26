@@ -69,7 +69,7 @@
 #define MSP_DISPLAYPORT_UART SERIAL_PORT_USART7
 // 蓝牙模块 UART8 默认开 MSP（115200），全片擦除后也能直接连
 #define MSP_UART             SERIAL_PORT_UART8
-// 手机 App 不认 MSP API 1.48：蓝牙口回报 API 1.47（版本号仍显示真实 2026.6.2，仅 2026 固件生效），USB 不受影响
+// SpeedyBee App 只兼容 4.2.0 - 25.12.* 固件：蓝牙口回报 2025.12.1 / API 1.47（仅 2026 固件生效），USB 显示真实 2026.6.2
 #define MSP_LEGACY_API_UART  SERIAL_PORT_UART8
 
 // 蜂鸣器 PB0。NPN（Q2 射极接地），高电平鸣，所以不再反相。
