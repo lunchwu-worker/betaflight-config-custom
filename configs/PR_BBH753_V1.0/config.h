@@ -28,7 +28,7 @@
 #define FC_TARGET_MCU        STM32H743
 
 #define BOARD_NAME           BBH743
-#define MANUFACTURER_ID      AIRB
+#define MANUFACTURER_ID      AXIS
 
 // X4 = 8MHz 晶振（PH0/PH1）
 #define SYSTEM_HSE_MHZ       8
