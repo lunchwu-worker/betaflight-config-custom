@@ -71,6 +71,10 @@
 #define MSP_UART             SERIAL_PORT_UART8
 // 手机 App 不认 2026 / API 1.48：蓝牙口回报 2025.12.1 / API 1.47（仅 2026 固件生效），USB 不受影响
 #define MSP_LEGACY_API_UART  SERIAL_PORT_UART8
+// 2025.12.1 固件对外显示版本 2026.6.2（仅 MSP 版本回报，API 仍 1.47，功能为 25 版）
+#define MSP_REPORT_FC_VERSION_YEAR         2026
+#define MSP_REPORT_FC_VERSION_MONTH        6
+#define MSP_REPORT_FC_VERSION_PATCH_LEVEL  2
 
 // 蜂鸣器 PB0。NPN（Q2 射极接地），高电平鸣，所以不再反相。
 // 无源蜂鸣器用 PWM，2500Hz。定时器必须是 TIM3_CH3（PB0 序号 2），不能占 TIM1。
