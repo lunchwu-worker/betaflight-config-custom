@@ -27,7 +27,7 @@
 // OSD = MSP DisplayPort，UART7（PE8/PE7，接到 CH32）。蓝牙 = UART8（PE1/PE0）。无 MAX7456，无 PPM。
 #define FC_TARGET_MCU        STM32H743
 
-#define BOARD_NAME           BBH753
+#define BOARD_NAME           BBH743
 #define MANUFACTURER_ID      AIRB
 
 // X4 = 8MHz 晶振（PH0/PH1）
