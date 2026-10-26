@@ -155,8 +155,12 @@
 #define GYRO_1_CLKIN_PIN     PA5
 #define GYRO_2_CLKIN_PIN     PA6
 
-#define GYRO_1_EXTI_PIN      PC4
-#define GYRO_2_EXTI_PIN      PB7
+// 陀螺仪默认走定时轮询：26 固件下 EXTI 中断模式陀螺仪有延迟，客户实测关中断后正常。
+// 硬件中断脚 GYRO_1 = PC4，GYRO_2 = PB7；以后要恢复中断可在 CLI 执行：
+//   resource GYRO_EXTI 1 C04
+//   resource GYRO_EXTI 2 B07
+// #define GYRO_1_EXTI_PIN      PC4
+// #define GYRO_2_EXTI_PIN      PB7
 
 // 定时器序号按 timer_stm32h7xx.c 里同一引脚的出现顺序，从 1 计。
 // 电机：PE13/PE14/PE9/PE11 都只有 TIM1，序号 1。DMA 0–3。
