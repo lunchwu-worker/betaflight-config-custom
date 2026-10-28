@@ -1,0 +1,153 @@
+/*
+ * This file is part of Betaflight.
+ *
+ * Betaflight is free software. You can redistribute this software
+ * and/or modify this software under the terms of the GNU General
+ * Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or (at your option) any later
+ * version.
+ *
+ * Betaflight is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this software.
+ *
+ * If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#pragma once
+
+// FC-30-BT V1.8 公版，STM32F722 焊盘 U11；与 F405 v1.8 共用网表 Netlist_FC-30-BT_V1.8。
+// SERVO2 网络同时连接 U11.27(PB1) 和 U11.28(PB2)，F722 使用 PB2(TIM2_CH3)；PB1 留作高阻输入。
+//
+// 本变体相对 PR_F722-BT_v1.8 的唯一改动：TF 卡 SPI 片选由 PA15 改为 PC14。
+// PC14 在 F722 上默认是 OSC32_IN，本板未接 32.768kHz 晶振，可作普通 GPIO 使用
+// （LSE 关闭后可用，Betaflight 默认不启用 LSE）。
+// SD 卡仍走 SPI3（PB3=SCK / PB4=MISO / PB5=MOSI），仅 CS 变更。
+#define FC_TARGET_MCU     STM32F7X2
+
+#define BOARD_NAME PR_F722_BT_V18_SD_PC14
+#define MANUFACTURER_ID ABCD
+
+#define USE_ACC
+#define USE_ACC_SPI_ICM42688P
+#define USE_ACC_SPI_LSM6DSV16X
+
+#define USE_GYRO
+#define USE_GYRO_SPI_ICM42688P
+#define USE_GYRO_SPI_LSM6DSV16X
+#define USE_ACCGYRO_LSM6DSV16X
+// LSM6DSK320X：低量程通道 ±16g / ±2000dps，不启用 ±320g 高G通道
+#define USE_ACCGYRO_LSM6DSK320X
+
+#define USE_ACCGYRO_IIM42652
+#define USE_ACCGYRO_ICM40608
+
+#define USE_SDCARD
+#define USE_SDCARD_SPI
+#define USE_BARO
+#define USE_BARO_BMP280
+#define USE_BARO_DPS310
+#define USE_MAG
+#define USE_GPS
+#define USE_LED_STRIP
+
+#define BEEPER_PIN PA4
+#define MOTOR1_PIN PC8
+#define MOTOR2_PIN PC9
+#define MOTOR3_PIN PA9
+#define MOTOR4_PIN PA10
+#define MOTOR5_PIN PB14
+#define MOTOR6_PIN PB15
+#define MOTOR7_PIN PA8
+#define MOTOR8_PIN PB1
+#define SERVO1_PIN PA6
+#define SERVO2_PIN PB10
+
+#define RX_PPM_PIN PA3
+
+#define LED_STRIP_PIN PA7
+
+#define UART1_TX_PIN PB6
+#define UART2_TX_PIN PA2
+#define UART3_TX_PIN PC10
+#define UART4_TX_PIN PA0
+#define UART5_TX_PIN PC12
+#define UART6_TX_PIN PC6
+
+#define UART1_RX_PIN PB7
+#define UART2_RX_PIN PA3
+#define UART3_RX_PIN PC11
+#define UART4_RX_PIN PA1
+#define UART5_RX_PIN PD2
+#define UART6_RX_PIN PC7
+
+#define USE_I2C_PULLUP
+
+#define I2C1_SCL_PIN PB8
+#define I2C1_SDA_PIN PB9
+
+#define LED0_PIN PB0 // 网表 LED0 → U11.25
+
+#define SPI2_SCK_PIN PB13
+#define SPI3_SCK_PIN PB3
+#define SPI2_SDI_PIN PC2
+#define SPI3_SDI_PIN PB4
+#define SPI2_SDO_PIN PC3
+#define SPI3_SDO_PIN PB5
+#define ESCSERIAL_PIN PC7
+
+#define ADC_VBAT_PIN PC1
+#define ADC_CURR_PIN PC0
+
+#define GYRO_1_EXTI_PIN PB12
+#define GYRO_1_CS_PIN PA5
+#define USE_GYRO_CLKIN
+#define GYRO_1_CLKIN_PIN PB11 // 网表 IMUCLK
+
+#define PINIO1_PIN PC4 // BT enable (CH591 MOD1.4)
+#define PINIO1_BOX 40
+
+#define PINIO2_PIN PC13 // CAM switch
+#define PINIO2_BOX 41
+
+#define DEFAULT_DSHOT_BITBANG DSHOT_BITBANG_ON
+#define DSHOT_BITBANGED_TIMER_DEFAULT DSHOT_BITBANGED_TIMER_TIM1
+
+#define TIMER_PIN_MAPPING \
+    TIMER_PIN_MAP( 0, PA3,  2, 0) \
+    TIMER_PIN_MAP( 1, PA7,  2, 0) \
+    TIMER_PIN_MAP( 2, PA6,  2, -1) \
+    TIMER_PIN_MAP( 3, PB10, 1, -1) \
+
+#define ADC1_DMA_OPT 0
+
+#define DEFAULT_BLACKBOX_DEVICE     BLACKBOX_DEVICE_SDCARD
+#define DEFAULT_MOTOR_DSHOT_SPEED PWM_TYPE_DSHOT300
+#define DEFAULT_DSHOT_BURST DSHOT_DMAR_OFF
+#define DEFAULT_CURRENT_METER_SOURCE CURRENT_METER_ADC
+#define DEFAULT_VOLTAGE_METER_SOURCE VOLTAGE_METER_ADC
+#define DEFAULT_VOLTAGE_METER_SCALE 232
+#define DEFAULT_CURRENT_METER_SCALE 250
+#define BEEPER_INVERTED
+#define SYSTEM_HSE_MHZ 8
+#define OSD_CANVAS_SIZE_DEBUG
+
+#define MAG_I2C_INSTANCE (I2CDEV_1)
+#define BARO_I2C_INSTANCE (I2CDEV_1)
+#define GYRO_1_SPI_INSTANCE SPI2
+// 本变体：TF 卡片选 PC14（公版为 PA15）
+#define SDCARD_SPI_CS_PIN PC14
+#define SDCARD_SPI_INSTANCE SPI3
+#define GYRO_1_ALIGN CW0_DEG
+
+#define MSP_DISPLAYPORT_UART    SERIAL_PORT_UART4
+
+#define SERIALRX_UART SERIAL_PORT_USART2
+#define SERIALRX_PROVIDER SERIALRX_CRSF
+
+#define MSP_UART SERIAL_PORT_USART1
